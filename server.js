@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const nodemailer = require('nodemailer');
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -144,5 +144,5 @@ app.post('/voice/action', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log("SERVER IS LIVE ON PORT 3000");
+  console.log(`SERVER IS LIVE ON PORT ${PORT}`);
 });

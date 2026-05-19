@@ -18,13 +18,18 @@
     <div class="nav-logo">Mama <span>Maendeleo</span><br><small
         style="font-size:0.6em;letter-spacing:0.3em;color:rgba(255,255,255,0.4);font-weight:300;font-style:normal;">RESORT
         · LAMU</small></div>
-    <ul class="nav-links">
+    <ul class="nav-links" id="navLinks">
       <li><a href="#about">About</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#rates">Rates</a></li>
       <li><a href="#location">Location</a></li>
       <li><a href="#booking" id="navBookNow" class="nav-cta">Book Now</a></li>
     </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle Navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </nav>
 
   <!-- ── HERO ── -->
@@ -119,7 +124,7 @@
     </div>
     <div class="services-grid">
       <div class="svc-card">
-        <img class="svc-img" src="images/accommodation.png" alt="Accommodation" />
+        <img class="svc-img svc-img-accommodation" src="images/accommodation.png" alt="Accommodation" />
         <h3 class="svc-title">Accommodation</h3>
         <p class="svc-desc">Nine fully self-contained standard rooms with four-poster beds, fresh mosquito nets, working
           desks, ceiling fans, and free high-speed Wi-Fi catering to both leisure and business guests.</p>
@@ -554,8 +559,26 @@
         btnText.textContent = 'Send Booking Enquiry';
       }
     });
-  </script>
 
+    // Mobile Hamburger Menu Toggle
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    if (navToggle && navLinks) {
+      navToggle.addEventListener('click', () => {
+        navToggle.classList.toggle('active');
+        navLinks.classList.toggle('active');
+      });
+
+      // Close menu when any link is clicked
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          navToggle.classList.remove('active');
+          navLinks.classList.remove('active');
+        });
+      });
+    }
+  </script>
 
 </body>
 
